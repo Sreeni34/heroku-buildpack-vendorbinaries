@@ -13,6 +13,7 @@ if [ ! -s $1/.vendor_urls ]; then
   exit 0
 fi
 
+BUILD_DIR=$1
 cd $1
 
 while read url; do
@@ -27,5 +28,9 @@ while read url; do
     fi
 
     curl -L --silent $url | tar x $flag
+    echo "exporting PATH" | indent
+    PROFILE_PATH="$BUILD_DIR/.profile.d/melt.sh"
+    mkdir -p $(dirname $PROFILE_PATH)
+    echo 'export PATH="$PATH:Shotcut/Shotcut.app"' >> $PROFILE_PATH
   fi
 done < .vendor_urls
