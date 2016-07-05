@@ -32,5 +32,8 @@ while read url; do
     PROFILE_PATH="$BUILD_DIR/.profile.d/melt.sh"
     mkdir -p $(dirname $PROFILE_PATH)
     echo 'export PATH="$PATH:Shotcut/Shotcut.app"' >> $PROFILE_PATH
+    PROFILE_PATH2="$BUILD_DIR/.profile.d/ffmpeg.sh"
+    mkdir -p $(dirname $PROFILE_PATH2)
+    echo 'export PATH="$PATH:Shotcut/Shotcut.app"' >> $PROFILE_PATH2
   fi
 done < .vendor_urls
